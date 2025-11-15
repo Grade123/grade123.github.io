@@ -7,8 +7,8 @@ import {
 import { ModeToggle } from "../theme-toggle"
 
 export default function Header() {
-    return <div className="flex w-full justify-center absolute">
-        <div className="flex w-full justify-between max-w-3xs m-4 bg-background p-2 border rounded-2xl">
+    return <div className="flex justify-center absolute w-full">
+        <div className="flex justify-between m-4 w-full bg-background p-2 border rounded-2xl md:max-w-2xl">
             <NavigationMenu>
                 <NavigationMenuList>
                     <NavigationMenuItem>
