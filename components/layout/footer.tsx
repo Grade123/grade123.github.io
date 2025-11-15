@@ -2,7 +2,7 @@
 export default function Footer() {
     const year = new Date().getFullYear()
 
-    return <footer className="border-t mt-8 py-6 text-center text-sm text-muted-foreground">
+    return <footer className="border-t py-6 text-center text-sm text-muted-foreground">
       <p>
         © {year} Stian
       </p>
