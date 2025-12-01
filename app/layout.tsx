@@ -1,29 +1,23 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "../../components/layout/header";
+import Header from "../components/layout/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/layout/footer";
 
-export function generateStaticParams() {
-  return [{lang : "en"}, {lang : "no"}];
-}
 
 export const metadata: Metadata = {
   title: "Portfolio | Stian Ø.J",
   description: "Portfolio, Norwegian, Developer, Web Developer, Backend Developer, Spring, Java, JavaScript",
 };
 
-export default async function RootLayout({
-  children,
-  params
+export default function RootLayout({
+  children
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ lang: string }>
 }>) {
-  const { lang } = await params;
 
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
