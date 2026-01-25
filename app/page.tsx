@@ -1,24 +1,36 @@
 import { Badge } from "@/components/ui/badge";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 export default function Home() {
   const projects = [
     {
-      title: "Portfolio",
-      description: "Website where I show off some of my work",
-      badges: ["React", "Next", "Shadcn", "Github Actions", "Github Pages"],
-    },
-    {
       title: "Driveo",
       description:
-        "Car rental site application. Complete with backend and dashboard. \nApplication developed during web and application courses at NTNU",
+        "Car rental site application where users can register their own cars for rental, and rent cars from others. The application is a full stack application using spring-boot and postgres on the backend and React on the frontend. \n Developed as a group project during web and application courses at NTNU",
       badges: ["Fullstack", "React", "Spring-Boot", "Postgres", "nginx", "Javascript", "Rest-Api", "JWT", "Axios"],
+      image: {
+        src: "/Driveo.png",
+        alt: "Driveo screenshot",
+      }
     },
     {
       title: "Todolist application",
-      description: "Todolist application with ability for creating multiple todolists. \nApplication developed during fifth semester at NTNU",
+      description: "Todolist application with a simple and clean interface allowing for multiple todolists. The application is built with Flutter and has been tested on Android devices. \nApplication developed during fifth semester at NTNU",
       badges: ["Flutter", "Android"],
+      image: {
+        src: "/Todo.jpg",
+        alt: "Todolist screenshot",
+      }
+    },
+    {
+      title: "Portfolio",
+      description: "Small personal project where I show of my work. \nBuilt with Next.js and Shadcn/ui. Hosted with Github Pages and automated deploys with Github Actions.",
+      badges: ["React", "Next", "Shadcn", "Github Actions", "Github Pages"],
+      image: {
+        src: "/Portfolio.png",
+        alt: "Portfolio screenshot",
+      }
     },
   ]
 
@@ -33,13 +45,14 @@ export default function Home() {
           <p className="italic">Stay tuned</p>
         </main>
       </div>
-      <div className="w-full p-4 flex flex-col items-center gap-4">
-        <h2 className="text-3xl">Projects</h2>
-        <Carousel className="w-3xl max-w-screen p-10">
-          <CarouselPrevious />
-          <CarouselContent>
-            {projects.map((project, index) => (
-              <CarouselItem key={index}>
+      <div className="w-full p-16 flex flex-col items-center gap-4">
+        <h2 className="text-3xl mb-10">Projects</h2>
+        <div className="w-full max-w-4xl flex flex-col gap-60">
+          {projects.map((project, index) => (
+            <div key={index} className="flex flex-col gap-8">
+              
+              <Image className="rounded-2xl aspect-video object-scale-down bg-foreground" src={project.image.src} alt={project.image.alt} sizes="100vw" width={896} height={504}/>
+              <div>
                 <h1 className="text-2xl mb-4">{project.title}</h1>
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-wrap gap-2">
@@ -50,11 +63,11 @@ export default function Home() {
                   <Separator />
                   <p>{project.description}</p>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselNext />
-        </Carousel>
+              </div>
+            </div>
+          ))}
+
+        </div>
       </div>
     </div>
 
